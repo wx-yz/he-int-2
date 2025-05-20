@@ -8,3 +8,22 @@ endpoints:
       type: REST
       networkVisibilities:
         - Public
+dependencies:
+    connectionReferences:
+    - name: johnmuir_conn
+      resourceRef: service:/health2/johnmuir/v1/74559/PROJECT
+    connectionReferences:
+    - name: mayoclinic_conn
+      resourceRef: service:/health2/mayoclinic/v1/c5d5a/PROJECT
+configuration:
+  env:
+    - name: HOSPITAL1_URL
+      valueFrom:
+        connectionRef:
+          name: johnmuir_conn
+          key: ServiceURL
+    - name: HOSPITAL2_URL
+      valueFrom:
+        connectionRef:
+          name: mayoclinic_conn
+          key: ServiceURL
