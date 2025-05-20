@@ -1,0 +1,109 @@
+openapi: 3.0.1
+info:
+  title: Main Openapi Yaml
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "8080"
+paths:
+  /physicians/{speciality}:
+    get:
+      operationId: getPhysiciansSpeciality
+      parameters:
+      - name: speciality
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Physician'
+        "500":
+          description: InternalServerError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorPayload'
+components:
+  schemas:
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    Physician:
+      required:
+      - contactNumber
+      - email
+      - firstName
+      - id
+      - lastName
+      - practiceHours
+      - speciality
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        speciality:
+          type: string
+        contactNumber:
+          type: string
+        email:
+          type: string
+        practiceHours:
+          type: array
+          items:
+            $ref: '#/components/schemas/PracticeHours'
+      additionalProperties: false
+    PracticeHours:
+      required:
+      - day
+      - endTime
+      - startTime
+      type: object
+      properties:
+        day:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+      additionalProperties: false

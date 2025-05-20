@@ -8,6 +8,7 @@ endpoints:
       type: REST
       networkVisibilities:
         - Public
+      schema: /main_openapi.yaml
 dependencies:
     connectionReferences:
     - name: johnmuir_conn
