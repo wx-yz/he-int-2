@@ -1,0 +1,17 @@
+/*
+### Try Resource: 'GET /physicians'
+
+*/
+/*
+
+
+*/
+GET http://localhost:8080/physicians
+
+HTTP/1.1 200  - OK
+content-type: application/json
+connection: close
+server: ballerina
+date: Tue, 20 May 2025 10:14:42 -0700
+content-encoding: gzip
+content-length: 274
