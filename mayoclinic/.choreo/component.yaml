@@ -1,0 +1,10 @@
+schemaVersion: "1.2"
+endpoints:
+    - name: mayoclinic
+      displayName: MayoClinic
+      service:
+        basePath: /
+        port: 8081
+      type: REST
+      networkVisibilities:
+        - Project

@@ -1,0 +1,10 @@
+schemaVersion: "1.2"
+endpoints:
+    - name: johnmuir
+      displayName: JohnMuir
+      service:
+        basePath: /
+        port: 8082
+      type: REST
+      networkVisibilities:
+        - Project
